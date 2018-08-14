@@ -1,0 +1,2 @@
+xxx.wpc.psicdn.net            *.exsample.io                Edgecast
+xxx.e14.akamaiedge.net        *.exsample.io                Akamai
