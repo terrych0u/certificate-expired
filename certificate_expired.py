@@ -50,7 +50,7 @@ for lists in servers:
     except:
         response = "Unable to connect to %s : %s " % (endpoint, port)
         
-#print response
+# print response
 if not response:
     continue
 else:

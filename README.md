@@ -1,2 +1,2 @@
-# check-cdn-ssl-certificate
-The tool help to check ssl certificate expired on CDN and mail alert 
+# check-ssl-certificate-expired
+The tool help to check ssl certificate expired and send mail alert 
