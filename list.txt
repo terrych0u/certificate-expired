@@ -1,2 +1,6 @@
-xxx.wpc.psicdn.net            *.exsample.io                Edgecast
-xxx.e14.akamaiedge.net        *.exsample.io                Akamai
+audio-tx-int.lv-play.com              Tencent
+video-tx-int.lv-play.com              Tencent
+video-tx.goplayone.com                Tencent
+pub.lv-show.com                       WagnSu
+video-ws-aws.lv-play.com              WagnSu
+video-ws.goplayone.com                WagnSu
