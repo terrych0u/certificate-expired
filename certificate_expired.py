@@ -7,6 +7,7 @@ import requests
 import socket
 import ssl
 import time
+import os
 
 
 def webhook(message, max_retries=3, retry_delay=3):
@@ -41,10 +42,11 @@ if __name__ == '__main__':
     alert_days = 30
     port = 443
     server_list = open( "list.txt", "r")
-    url = ""
-
+    url = os.getenv(URL)
 
     for lists in server_list:
+        message = ""
+
         # endpoint = lists.strip().split()[0]
         domain = lists.strip().split()[0]
         cdn = lists.strip().split()[1]
@@ -68,9 +70,12 @@ if __name__ == '__main__':
             if remaining_days < alert_days:
                 # message = "%s certificate %s will expires in %s days \n" % (cdn, domain, remaining_days)
                 message = {"msgtype": "text","text": {"content":"%s certificate %s will expires in %s days \n" % (cdn, domain, remaining_days)}}
-            else:
-                # message = "The certificate for %s on %s is still valid for %s days" % (domain, cdn, remaining_days)
-                message = {"msgtype": "text","text": {"content":"The certificate for %s on %s is still valid for %s days" % (domain, cdn, remaining_days)}}
+            # else:
+            #     message = "The certificate for %s on %s is still valid for %s days" % (domain, cdn, remaining_days)
+            #     message = {"msgtype": "text","text": {"content":"The certificate for %s on %s is still valid for %s days" % (domain, cdn, remaining_days)}}
+
+            print({"info": "The certificate for %s on %s is still valid for %s days" % (
+                domain, cdn, remaining_days)})
         
         except ssl.SSLError as e:
             print(f"An error occurred while checking the certificate: {e}")
@@ -80,7 +85,5 @@ if __name__ == '__main__':
 
 
         # print(message)
-        if not message:
-            continue
-        else:
+        if message:
             webhook(message)
